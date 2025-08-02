@@ -28,7 +28,7 @@ x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratif
 # Vectorize
 cv = CountVectorizer(stop_words='english')
 X_train = cv.fit_transform(x_train)
-X_test = cv.transform(x_test)  # ✅ fixed here
+X_test = cv.transform(x_test)
 
 # Model
 nb = MultinomialNB()
@@ -46,13 +46,13 @@ cm = confusion_matrix(y_test, y_pred, labels=["Positive", "Negative"])
 
 fig, ax = plt.subplots(figsize=(5, 5))
 cax = ax.matshow(cm, cmap='Blues')
-plt.title("Confusin Matrix")  # typo still there for realism
+plt.title("Confusin Matrix")
 plt.colorbar(cax)
 ax.set_xticks([0, 1])
 ax.set_yticks([0, 1])
 ax.set_xticklabels(['Pos', 'Neg'])
 ax.set_yticklabels(['Pos', 'Neg'])
-plt.xlabel("Predcted")  # another typo
+plt.xlabel("Predcted")
 plt.ylabel("Actual")
 
 for i in range(len(cm)):
